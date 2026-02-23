@@ -1,0 +1,21 @@
+package com.example.stuff.service.impl;
+
+import com.example.stuff.entity.Student;
+import com.example.stuff.repository.StudentRepository;
+import com.example.stuff.service.StudentService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class StudentServiceImpl implements StudentService {
+
+    private final StudentRepository studentRepository;
+
+    @Override
+    public List<Student> getAllStudentsWithAgeGreaterThan(int age) {
+        return studentRepository.findByAgeGreaterThan(age);
+    }
+}
