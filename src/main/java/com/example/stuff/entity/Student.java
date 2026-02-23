@@ -1,16 +1,21 @@
-package com.example.stuff;
+package com.example.stuff.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity(name = "Student")
 @Table(name = "student")
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
+
+    public Student(String firstName, String lastName, String email, Integer age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+    }
 
     @Id
     @SequenceGenerator(name = "student_sequence", sequenceName = "student_sequence", allocationSize = 1)
@@ -25,7 +30,7 @@ public class Student {
     private String lastName;
 
     @Column(name = "email", nullable = false, columnDefinition = "TEXT", unique = true)
-    private  String email;
+    private String email;
 
     @Column(name = "age")
     private Integer age;
